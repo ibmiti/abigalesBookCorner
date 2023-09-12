@@ -1,8 +1,11 @@
-/*
-	Paradigm Shift by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+// warning message timeout
+       // Wait for 5 seconds (5000 milliseconds) and then remove the div
+       setTimeout(function() {
+        var divToRemove = document.getElementById("warning-message");
+        if (divToRemove) {
+            divToRemove.parentNode.removeChild(divToRemove);
+        }
+    }, 5000); // 5000 milliseconds = 5 seconds
 
 (function($) {
 

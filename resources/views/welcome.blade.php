@@ -12,11 +12,13 @@
 	<body class="is-preload">
 
     <!-- Warning messages -->
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+    <div id="warning-message">
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+    </div>
 
     @if(session('error'))
         <div class="alert alert-danger">
