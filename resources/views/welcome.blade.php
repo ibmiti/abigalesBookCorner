@@ -10,21 +10,20 @@
         <!-- <link rel="script" href="{{ asset('js/main.js')}}"/> -->
 	</head>
 	<body class="is-preload">
+        <!-- Warning messages -->
+        <div id="warning-message">
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
 
-    <!-- Warning messages -->
-    <div id="warning-message">
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-    </div>
-
-    @if(session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
         </div>
-    @endif
 
 		<!-- Wrapper -->
 			<div id="wrapper">
