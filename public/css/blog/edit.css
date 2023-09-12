@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@300&display=swap');
+.col-lg  {
+    /* font-family: 'Raleway', 'Roboto'; */
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    font-size: 40px;
+
+}
+.col-md {
+    font-family: Verdana;
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.5;
+    letter-spacing: .45px;
+    margin: 20px 20px 20px 20px;
+    padding: 20px 100px 20px 100px;
+}
+#title {
+    line-height: 1.5;
+    letter-spacing: .45px;
+    font-family: 'Big Shoulders Stencil Display', cursive;
+}
+a {
+    text-decoration: none;
+}
+#imgPost {
+    /* padding-right: 20px; */
+    width: 75%;
+}
+a:hover {
+    color: grey;
+}
+a:link {
+    text-decoration: none;
+}
+a:visited {
+    text-decoration: none;
+}
+img {
+    border-radius : 7%;
+    -moz-border-radius: 7%;
+    -webkit-border-radius:7%;
+}
+p {
+    color: grey;
+}
+.card-articles {
+    -moz-box-shadow: 0 0 3px grey !important;
+    -webkit-box-shadow: 0 0 3px grey !important ;
+    box-shadow: 0 0 20px grey !important;
+}
+.add-whitespace {
+    padding : auto;
+    margin : auto;
+}
+/* master style for the slab here */
+/* secondary style for slab here */
+/* third style-choice for slab here */
+/* fourth style-choice for slab here */

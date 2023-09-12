@@ -19,7 +19,12 @@ Route::get('/', function () {
 });
 
 // Ecommerce route 1
-Route::get('/shop/books', [ProductsController::class, 'showBookProducts'])->name('showBookProducts');
+Route::get('/shop/books', [
+    ProductsController::class, 'showBookProducts'
+    ])->name('showBookProducts');
 
 // Ecommerce route 2
-Route::get('/shop/general', [ProductsController::class, 'showGeneralProducts'])->name('showGeneralProducts');
+Route::get('/shop/general', [
+    ProductsController::class, 'showGeneralProducts']
+    )->name('showGeneralProducts');
+
