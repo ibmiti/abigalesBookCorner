@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,20 +18,23 @@ use App\Http\Controllers\BlogController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomeController::class, 'index']);
+
+// Admin/Auth routes
+Route::get('/secret/admin', function (){
+    return view('auth.admin');
 });
 
-// Ecommerce route 1
-Route::get('/shop/books', [
-    ProductsController::class, 'showBookProducts'
-    ])->name('showBookProducts');
+Route::post('/process-form', [LoginController::class, 'process'])->name('process.form');
 
-// Ecommerce route 2
-Route::get('/shop/general', [
-    ProductsController::class, 'showGeneralProducts']
-    )->name('showGeneralProducts');
+// Route::post('/contact', [Homecontroller::class, 'sendEmail'])->name('sendEmail'); TODO get this working later
 
+// Post admin, Dashboard route is accessible
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+// Blog routes
 Route::get('/blog/all', [BlogController::class, 'index']);
 
 // Show authoring view
@@ -53,3 +60,33 @@ Route::post('/update/{articleId}', [BlogController::class, 'update'])->name('upd
 
 // Remove blogPost
 Route::post('/blog/delete/{blogPost}', [BlogController::class, 'destroy']);
+
+// Route::get('/blog/edit', function(){
+//     return view('blog.edit');
+// })->name('editBlog');
+
+
+// Ecommerce routes
+// 1 Book/pdf related route,view
+Route::get('/shop/books', [ProductsController::class, 'showBookProducts'])->name('showBookProducts');
+
+// 2 General route,view
+Route::get('/shop/general', [ProductsController::class, 'showGeneralProducts'])->name('showGeneralProducts');
+
+// 3 product admin route, view
+Route::get('/shop/admin', function(){
+    return view('ecommerce.admin');
+})->name('productAdmin');
+
+// 4 List or crud routes for Products
+Route::post('/shop/product/create', [ProductsController::class, 'store'])->name('createProduct');
+// Route::get('/shop/products', [ProductsController::class, 'index'])->name('products'); // not used currently
+
+// show individual product which is to be edited
+Route::get('/shop/products/edit', [ProductsController::class, 'showEditPage'])->name('editProducts'); //
+Route::get('/shop/product/edit/{productId}', [ProductsController::class, 'showProductToBeEdited'])->name('showProductToBeEdited'); //
+Route::post('/shop/product/update/{productId}', [ProductsController::class, 'update'])->name('updateProduct');
+Route::post('/shop/product/delete/{productId}', [ProductsController::class, 'delete'])->name('deleteProduct'); //
+
+// Is this an error?
+// require __DIR__.'/auth.php';
