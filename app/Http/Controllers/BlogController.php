@@ -225,11 +225,7 @@ class BlogController extends Controller
             //  protect db from incorrect typed articles
             $givenType = ucwords($article->type);
             // make this dynamic
-            $expectedTypes = array(
-                'Featured','Health','Joyful',
-                'Human','Literature-And-Arts', 'Stem',
-                'Children-Books', 'Fiction', 'Non-Fiction',
-            );
+            $expectedTypes = array('Featured','General','Shop');
 
             if (!in_array($givenType, $expectedTypes, true)) {
                 dd('type not expected', $givenType);
@@ -257,15 +253,16 @@ class BlogController extends Controller
             if($numberOfMatchesReturned < 1)
             {
                 $article->save();
-                return view('articles.actions.edit', [
-                    'article'=> $article,
+                $blogPosts = Blog::latest()->get();
+                return view('blog.editIndex', [
+                    'blogPosts'=> $blogPosts,
                     $request->session()->flash('success', 'Successfully created '.$article->type."'s".' Article', 1)
                 ]);
 
             } else {
                 // TODO maybe log some error here
                 // article with same title already exists
-                return view('articles.actions.create', [
+                return view('blog.create', [
                     'article'=> $article,
                     $request->session()->flash('danger', 'Article with that title exists already', 1)
                 ]);
@@ -551,6 +548,7 @@ class BlogController extends Controller
 
 //  protect db from incorrect typed articles
         $givenType = ucwords($storedArticleToBeEdited->type);
+
         $expectedTypes = array('Featured','General','Shop');
         // If the given type matches with the expected types
         if (!in_array($givenType, $expectedTypes, true)) {
