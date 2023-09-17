@@ -101,7 +101,7 @@
                                 <article class="post">
                                     <header>
                                         <div class="title">
-                                            <h2><a href="single.html">{{ $post->title }}</a></h2>
+                                            <h2><a href="{{ route('showBlogPost', $post->id) }}">{{ $post->title }}</a></h2>
                                             <p>{{ $post->excerpt }}</p>
                                         </div>
                                         <div class="meta">

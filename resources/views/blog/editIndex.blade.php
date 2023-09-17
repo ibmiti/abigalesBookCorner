@@ -40,7 +40,7 @@
                     Edit the latest Articles
                 </p>
                 <hr style="border: 2px solid black;">
-                @if(isset($blogPosts))
+                @if(isset($article))
                     @foreach($blogPosts as $bp)
                         <div class="row add-whitespace mt-4 mb-4">
                             <div class="col-lg">

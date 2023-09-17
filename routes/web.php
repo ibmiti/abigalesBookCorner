@@ -43,7 +43,7 @@ Route::get('/blog/create', function(){
 })->name('createBlog');
 
 // Show individual blog post
-Route::get('/blog/{id}', [BlogController::class, 'show']);
+Route::get('/blog/{id}', [BlogController::class, 'show'])->name('showBlogPost');
 
 // Action: Submit and create blog post
 Route::post('/create-article', [BlogController::class, 'confirmAndCreateArticle'])->name('createArticle');

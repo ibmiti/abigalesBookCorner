@@ -279,6 +279,7 @@ class BlogController extends Controller
         // Using the given id, find the blog post
         $blogPost = Blog::find($givenId);
 
+
         // goal: calc. avg read time:
         // function getReadingTimeEstimate($article){
         //     $paras = [];
