@@ -16,7 +16,7 @@
                 style="font-size:25px; font-weight:700;">
                    THE AUTHORING PAGE
             </h1>
-            <p class="mb-3 p-3 text-muted">BUILD A NEW ARTICLE OR EDIT AN EXISTING PRODUCT.</p>
+            <p class="mb-3 p-3 text-muted">LIST A NEW PRODUCT OR EDIT AN EXISTING PRODUCT.</p>
         </div>
         <div id="fourthDiv" class="m-2">
             <!-- TODO Add user's name here -->

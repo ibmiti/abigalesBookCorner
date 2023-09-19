@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('image');
             $table->float('price');
             $table->string('type');
+            $table->string('source');
             $table->boolean('sale')->default(false);
             $table->timestamps();
         });

@@ -77,12 +77,12 @@
                                         <!-- Sale badge-->
                                         <!-- TODO Get this to work -->
                                         @if(isset($book))
-                                            @if($bookProductsOnSale == true)
-                                                <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                                                <!-- If item is on sale, then display -->
+
+                                                <!-- <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+                                                If item is on sale, then display
                                                         sale
-                                                </div>
-                                            @endif
+                                                </div> -->
+
                                         @endif
                                         <!-- Product image-->
                                         <img class="card-img-top image-container" src="{{ $book->image }}" alt="{{$book->description }}" />

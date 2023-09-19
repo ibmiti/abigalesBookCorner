@@ -11,7 +11,6 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="is-preload">
-        <x-flashMessage />
         @yield('content')
         <!-- Scripts -->
         <!-- <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>

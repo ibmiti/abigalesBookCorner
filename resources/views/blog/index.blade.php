@@ -113,7 +113,7 @@
                                     <p></p>
                                     <footer>
                                         <ul class="actions">
-                                            <li><a href="single.html" class="button large">Continue Reading</a></li>
+                                            <li><a href="{{ route('showBlogPost', $post->id) }}" class="button large">Continue Reading</a></li>
                                         </ul>
                                         <ul class="stats">
                                             <li><a href="#">General</a></li>

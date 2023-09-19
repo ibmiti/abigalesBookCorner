@@ -394,6 +394,7 @@ class BlogController extends Controller
      */
     public function update(Request $request, $articleId)
     {
+
 // TODO FIGURE OUT WHY THIS VALIDATION IS FAILING,
 // TODO VALIDATION ALSO DOES NOT RETURN THE ERROR TO THE VIEW, THIS IS A MUST FIX
         // $this->validate($request, [
@@ -473,11 +474,9 @@ class BlogController extends Controller
         $storedArticleToBeEdited->intro          = $request->intro ?? $storedArticleToBeEdited->intro;
 
         // truncating || limiting the excerpt
-
         $storedArticleToBeEdited->excerpt        =  \Illuminate\Support\Str::limit($request->excerpt, 40) ?? $storedArticleToBeEdited->excerpt;
 
         $storedArticleToBeEdited->heading1       = $request->heading1  ?? $storedArticleToBeEdited->heading1;
-
         $storedArticleToBeEdited->heading2       = $request->heading2  ?? $storedArticleToBeEdited->heading2;
         $storedArticleToBeEdited->heading3       = $request->heading3  ?? $storedArticleToBeEdited->heading3;
         $storedArticleToBeEdited->heading4       = $request->heading4  ?? $storedArticleToBeEdited->heading4;
@@ -532,7 +531,7 @@ class BlogController extends Controller
         $storedArticleToBeEdited->image9_name    = $request->image9_name  ?? $storedArticleToBeEdited->image9_name;
         $storedArticleToBeEdited->image10_name   = $request->image10_name ?? $storedArticleToBeEdited->image10_name;
 // image credits
-        $storedArticleToBeEdited->imageCredit   = $request->imageCredit  ??  $storedArticleToBeEdited->imageCredit;
+        $storedArticleToBeEdited->imageCredit   = $request->imageCredit  ?? $storedArticleToBeEdited->imageCredit;
         $storedArticleToBeEdited->imageCredit1  = $request->imageCredit1 ?? $storedArticleToBeEdited->imageCredit1;
         $storedArticleToBeEdited->imageCredit2  = $request->imageCredit2 ?? $storedArticleToBeEdited->imageCredit2;
         $storedArticleToBeEdited->imageCredit3  = $request->imageCredit3 ?? $storedArticleToBeEdited->imageCredit3;
@@ -544,38 +543,26 @@ class BlogController extends Controller
         $storedArticleToBeEdited->imageCredit9  = $request->imageCredit9 ?? $storedArticleToBeEdited->imageCredit9;
         $storedArticleToBeEdited->imageCredit10 = $request->imageCredit10?? $storedArticleToBeEdited->imageCredit10;
 
-
-
-
 //  protect db from incorrect typed articles
         $givenType = ucwords($storedArticleToBeEdited->type);
-
         $expectedTypes = array('Featured','General','Shop');
         // If the given type matches with the expected types
         if (!in_array($givenType, $expectedTypes, true)) {
             // if not in array, return back with error
             return back()->with('error', 'unexpteced type entered');
-            // dd('type not expected', $givenType);
         };
 
-
-
-// check if correctly subtyped
-        $givenSubtype = ucwords($storedArticleToBeEdited->subtype);
-        // dd($givenSubtype);
-        // TODO: Make this dynamic and changeable by the user later
-        $expectedSubtypes = array('Health', 'Science', 'Philosophy', 'other');
-            if (!in_array($givenSubtype, $expectedSubtypes, true))
-            {
-                dd('sub type not expected', $givenSubtype,
-                    'given', $expectedSubtypes
-            );
+        $givenSubtypes = ucwords($storedArticleToBeEdited->subtype);
+        $expectedSubtypes = array('Health','Development','Reviews','Howtos','Activities', 'Other');
+        if (!in_array($givenSubtypes, $expectedSubtypes, true)){
+            dd('sub type not expected', $givenSubtypes, 'given', $expectedSubtypes);
         }
+
         try {
             $storedArticleToBeEdited->save();
-            return view('/welcome')->with('message', 'Successfully updated article');
+            return view('/')->with('message', 'Successfully updated article');
         } catch (\Exception $e) {
-            return $e->getMessage();
+            return back()->with('error', $e->getMessage());
         }
     }
 
@@ -590,10 +577,10 @@ class BlogController extends Controller
         $blogToBeDeleted = Blog::find($blogId);
         try {
             $blogToBeDeleted->delete();
-            return redirect()->route('articles/edit/index')->with('message', 'article deleted.');
+            return redirect()->route('blogPostsEditIndex')->with('message', 'article deleted.');
         } catch (\Exception $e){
             $log_error = $e->getmessage();
-            return redirect()->route('articles')->with('message', 'Failed to delete article - contact ofRoot customer service, or try again.');
+            return redirect()->route('blogPostsEditIndex')->with('message', 'Failed to delete article - contact ofRoot customer service, or try again.');
         }
     }
 

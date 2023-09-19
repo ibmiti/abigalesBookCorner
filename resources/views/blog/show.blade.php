@@ -14,34 +14,19 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a href="index.html">Future Imperfect</a></h1>
+						<h1><a href="/">Abigales Book Corner: The Blog</a></h1>
 						<nav class="links">
 							<ul>
-								<li><a href="#">Lorem</a></li>
-								<li><a href="#">Ipsum</a></li>
-								<li><a href="#">Feugiat</a></li>
-								<li><a href="#">Tempus</a></li>
-								<li><a href="#">Adipiscing</a></li>
-							</ul>
-						</nav>
-						<nav class="main">
-							<ul>
-								<li class="search">
-									<a class="fa-search" href="#search">Search</a>
-									<form id="search" method="get" action="#">
-										<input type="text" name="query" placeholder="Search" />
-									</form>
-								</li>
-								<li class="menu">
-									<a class="fa-bars" href="#menu">Menu</a>
-								</li>
+								<li><a href="/">Home</a></li>
+								<li><a href="/blog/all">Back</a></li>
+                                <li><a href="/shop/books">Books</a></li>
+                                <li><a href="/shop/general">Merch</a></li>
 							</ul>
 						</nav>
 					</header>
 
 				<!-- Menu -->
 					<section id="menu">
-
 						<!-- Search -->
 							<section>
 								<form class="search" method="get" action="#">
@@ -50,7 +35,7 @@
 							</section>
 
 						<!-- Links -->
-							<section>
+							<!-- <section>
 								<ul class="links">
 									<li>
 										<a href="#">
@@ -77,7 +62,7 @@
 										</a>
 									</li>
 								</ul>
-							</section>
+							</section> -->
 
 						<!-- Actions -->
 							<section>
@@ -95,17 +80,85 @@
 							<article class="post">
 								<header>
 									<div class="title">
-										<h2><a href="#">Magna sed adipiscing</a></h2>
-										<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+										<h2><a href="#">{{ $blogPost->title ?? '' }}</a></h2>
+										<p>{{  $blogPost->excerpt }}</p>
 									</div>
 									<div class="meta">
 										<time class="published" datetime="2015-11-01">November 1, 2015</time>
-										<a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
+										<a href="#" class="author"><span class="name">{{ $blogPost->author }}</span><img src="images/avatar.jpg" alt="" /></a>
 									</div>
 								</header>
-								<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
-								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-								<p>Nunc quis dui scelerisque, scelerisque urna ut, dapibus orci. Sed vitae condimentum lectus, ut imperdiet quam. Maecenas in justo ut nulla aliquam sodales vel at ligula. Sed blandit diam odio, sed fringilla lectus molestie sit amet. Praesent eu tortor viverra lorem mattis pulvinar feugiat in turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce ullamcorper tellus sit amet mattis dignissim. Phasellus ut metus ligula. Curabitur nec leo turpis. Ut gravida purus quis erat pretium, sed pellentesque massa elementum. Fusce vestibulum porta augue, at mattis justo. Integer sed sapien fringilla, dapibus risus id, faucibus ante. Pellentesque mattis nunc sit amet tortor pellentesque, non placerat neque viverra. </p>
+								<span class="image featured">     <img src="{{ $blogPost->image_name }}" /></span>
+								<h1>{{ $blogPost->heading1 }}</h1>
+
+                                <p>{{ $blogPost->paragraph1Heading1 }}</p>
+
+
+
+                                <!-- 'heading1',
+    'heading2',
+    'heading3',
+    'heading4',
+    'heading5',
+    'heading6',
+    'heading7',
+    'heading8',
+    'heading9',
+    'heading10',
+    'paragraph1Heading1',
+    'paragraph2Heading1',
+    'paragraph3Heading1',
+    'paragraph1Heading2',
+    'paragraph2Heading2',
+    'paragraph3Heading2',
+    'paragraph1Heading3',
+    'paragraph2Heading3',
+    'paragraph3Heading3',
+    'paragraph1Heading4',
+    'paragraph2Heading4',
+    'paragraph3Heading4',
+    'paragraph1Heading5',
+    'paragraph2Heading5',
+    'paragraph3Heading5',
+    'paragraph1Heading6',
+    'paragraph2Heading6',
+    'paragraph3Heading6',
+    'paragraph1Heading7',
+    'paragraph2Heading7',
+    'paragraph3Heading7',
+    'paragraph1Heading8',
+    'paragraph2Heading8',
+    'paragraph3Heading8',
+    'paragraph1Heading9',
+    'paragraph2Heading9',
+    'paragraph3Heading9',
+    'paragraph1Heading10',
+    'paragraph2Heading10',
+    'paragraph3Heading10',
+    'image_name',
+    'image1_name',
+    'image2_name',
+    'image3_name',
+    'image4_name',
+    'image5_name',
+    'image6_name',
+    'image7_name',
+    'image8_name',
+    'image9_name',
+    'image10_name',
+    'imageCredit',
+    'imageCredit1',
+    'imageCredit2',
+    'imageCredit3',
+    'imageCredit4',
+    'imageCredit5',
+    'imageCredit6',
+    'imageCredit7',
+    'imageCredit8',
+    'imageCredit9',
+    'imageCredit10', -->
+
+
 								<footer>
 									<ul class="stats">
 										<li><a href="#">General</a></li>

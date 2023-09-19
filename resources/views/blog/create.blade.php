@@ -218,12 +218,6 @@
             </div>
 
 
-
-
-
-
-
-
             <div class="form-group">
                 <label for="image_name">Main Article Image</label>
                 <input type="text"
